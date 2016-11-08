@@ -19,7 +19,8 @@ URL:		http://search.cpan.org/dist/Data-TreeDumper/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl(Check::ISA)
+BuildRequires:	perl(Text::Wrap) >= 2001.0929
+BuildRequires:	perl-Check-ISA
 BuildRequires:	perl-Devel-Size >= 0.58
 BuildRequires:	perl-Sort-Naturally
 BuildRequires:	perl-Term-Size >= 0.2
@@ -64,14 +65,14 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-mv $RPM_BUILD_ROOT%{perl_vendorlib}/Data/*.pl $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+%{__mv} $RPM_BUILD_ROOT%{perl_vendorlib}/Data/*.pl $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README
-%{perl_vendorlib}/Data/*.pm
-%{_mandir}/man3/*
+%doc Changes README Todo
+%{perl_vendorlib}/Data/TreeDumper.pm
+%{_mandir}/man3/Data::TreeDumper.3pm*
 %{_examplesdir}/%{name}-%{version}
