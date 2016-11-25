@@ -9,7 +9,7 @@ Summary:	Data::TreeDumper - Perl module for dumping data structures
 Summary(pl.UTF-8):	Data::TreeDumper - moduł Perla do zrzucania struktur danych
 Name:		perl-Data-TreeDumper
 Version:	0.40
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -25,6 +25,8 @@ BuildRequires:	perl-Devel-Size >= 0.58
 BuildRequires:	perl-Sort-Naturally
 BuildRequires:	perl-Term-Size >= 0.2
 %endif
+# required with ($^O ne 'MSWin32') condition
+Requires:	perl-Term-Size >= 0.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
